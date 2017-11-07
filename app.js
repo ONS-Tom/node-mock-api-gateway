@@ -33,7 +33,8 @@ const validApiKeys = {};
 
 const app = express();
 app.use(compression()); // gzip all responses
-app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
+morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms');
+app.use(morgan('combined', { stream: logger.stream }));
 app.use(myParser.json()); // For parsing body of POSTs
 
 app.post('/auth', (req, res) => {
