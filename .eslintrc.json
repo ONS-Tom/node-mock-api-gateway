@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "airbnb-base/legacy"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "rules": {
+      "no-use-before-define": "off",
+      "comma-dangle": "off",
+      "global-require": "off",
+      "class-methods-use-this": "off",
+      "func-names": "off",
+      "arrow-body-style": "off",
+      "no-return-assign": "off",
+      "arrow-parens": "off"
+  },
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "name": "node-mock-api-gateway",
+  "version": "0.0.1",
+  "private": false,
+  "license": "MIT",
+  "description": "A mock API Gateway using Node.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ONS-Tom/node-mock-api-gateway.git"
+  },
+  "dependencies": {
+    "compression": "^1.7.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0",
+    "uuid": "^3.1.0",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.2",
+    "winston": "^2.4.0",
+    "btoa": "^1.1.2",
+    "base-64": "^0.1.0"
+  },
+  "engines": {
+    "node": "5.10.1",
+    "npm": "3.8.3"
+  },
+  "scripts": {
+    "start": "NODE_ENV=development node index.js"
+  },
+  "devDependencies": {
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}
