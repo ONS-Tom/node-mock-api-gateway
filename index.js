@@ -3,7 +3,7 @@
 const app = require('./app');
 const logger = require('./helpers/logger')(module);
 
-const PORT = process.env.PORT || 3003;
+const PORT = process.env.MOCK_GW_PORT || 3003;
 
 logger.level = 'info';
 logger.info('Started Winston logger & created log file');

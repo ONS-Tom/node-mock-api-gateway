@@ -1,5 +1,6 @@
 const rp = require('request-promise');
-const timeouts = parseInt(process.env.TIMEOUT, 10) || 5000;
+const TIMEOUT_GET = parseInt(process.env.MOCK_GW_TIMEOUT_GET, 10) || 5000;
+const TIMEOUT_POST = parseInt(process.env.MOCK_GW_TIMEOUT_POST, 10) || 5000;
 const logger = require('../helpers/logger')(module);
 
 function getApiEndpoint(url) {
@@ -7,7 +8,7 @@ function getApiEndpoint(url) {
   const options = {
     method: 'GET',
     uri: url,
-    timeout: timeouts.API_GET
+    timeout: TIMEOUT_GET
   };
 
   return rp(options);
@@ -18,7 +19,7 @@ function postApiEndpoint(url, postBody) {
   const options = {
     method: 'POST',
     uri: url,
-    timeout: timeouts.API_POST,
+    timeout: TIMEOUT_POST,
     headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
     body: JSON.stringify(postBody),
     json: false

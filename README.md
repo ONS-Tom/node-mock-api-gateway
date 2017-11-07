@@ -27,6 +27,19 @@ export MOCK_GW_TIMEOUT_POST=<timeout for POST requests, in milliseconds>
 
 1. `node index.js`
 
+If the defaut environment variable values don't fit your use case, pass your own into the `node index.js` command.
+
+| Environment Variable   | Default               |
+|------------------------|-----------------------|
+| MOCK_GW_API_URL        | http://localhost:9002 |
+| MOCK_GW_TIMEOUT_GET    | 5000                  |
+| MOCK_GW_TIMEOUT_POST   | 5000                  |
+| MOCK_GW_PORT           | 3003                  |
+| MOCK_GW_ADMIN_USERNAME | admin                 |
+| MOCK_GW_ADMIN_PASSWORD | admin                 |
+| MOCK_GW_USER_USERNAME  | test                  |
+| MOCK_GW_USER_PASSWORD  | test                  |
+
 ## Testing
 
 Running `npm test` will run all the tests described below.

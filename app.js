@@ -1,14 +1,11 @@
 'use strict';
 
-/* eslint strict: "off" */
-/* eslint comma-dangle: ["error", "never"] */
-
 const express = require('express');
 const base64 = require('base-64');
 const morgan = require('morgan');
 const myParser = require('body-parser');
 const compression = require('compression');
-const API_URL = process.env.API_URL || 'http://localhost:9002';
+const API_URL = process.env.MOCK_GW_API_URL || 'http://localhost:9002';
 const uuidv4 = require('uuid/v4');
 const logger = require('./helpers/logger')(module);
 const getUrlEndpoint = require('./helpers/helperMethods').getUrlEndpoint;
@@ -18,10 +15,10 @@ const postApiEndpoint = require('./helpers/rerouteRequest').postApiEndpoint;
 
 
 // Get the admin/user credentials from environment variables
-const ADMIN_USERNAME = process.env.SBR_UI_TEST_ADMIN_USERNAME;
-const ADMIN_PASSWORD = process.env.SBR_UI_TEST_ADMIN_PASSWORD;
-const USER_USERNAME = process.env.SBR_UI_TEST_USER_USERNAME;
-const USER_PASSWORD = process.env.SBR_UI_TEST_USER_PASSWORD;
+const ADMIN_USERNAME = process.env.MOCK_GW_ADMIN_USERNAME || 'admin';
+const ADMIN_PASSWORD = process.env.MOCK_GW_ADMIN_PASSWORD || 'admin';
+const USER_USERNAME = process.env.MOCK_GW_USER_USERNAME || 'test';
+const USER_PASSWORD = process.env.MOCK_GW_USER_PASSWORD || 'test';
 
 // We use the users JSON as a mock database holding { username: hashed_password }
 const users = {};
@@ -57,7 +54,7 @@ app.post('/auth', (req, res) => {
   return res.sendStatus(401);
 });
 
-app.get('/sbr/*', (req, res) => {
+app.get('/reroute/*', (req, res) => {
   const url = getUrlEndpoint(req.originalUrl);
   logger.info(`Rerouting GET API request to ${url}`);
 
@@ -78,7 +75,7 @@ app.get('/sbr/*', (req, res) => {
   }
 });
 
-app.post('/sbr/*', (req, res) => {
+app.post('/reroute/*', (req, res) => {
   const url = getUrlEndpoint(req.originalUrl);
   logger.info(`Rerouting POST API request to ${url}`);
 
